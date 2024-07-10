@@ -5,17 +5,21 @@ import CredentialsProvider from "next-auth/providers/credentials"; // 내 DB 로
 import { connectDB } from "@/util/db";
 import bcrypt from 'bcrypt'       // npm install bcrypt
 
+const googleId = process.env.google_id;
+const googleSecret = process.env.google_secret;
+const githubId = process.env.github_id;
+const githubSecret = process.env.github_secret;
 
 export const authOptions = {
   providers: [
     GoogleProvider({
       clientId:
-        "",
-      clientSecret: "",
+        googleId,
+      clientSecret: googleSecret,
     }),
     GithubProvider({
-      clientId: "",
-      clientSecret: "",
+      clientId: githubId,
+      clientSecret: githubSecret,
     }),
     CredentialsProvider({
       // 회원가입한 아이디로 로그인 UI
